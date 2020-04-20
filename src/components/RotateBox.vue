@@ -1,7 +1,6 @@
 <template>
   <canvas id="canvas" width="600" height="400"></canvas>
 </template>
-
 <script>
 import * as THREE from "three";
 export default {
