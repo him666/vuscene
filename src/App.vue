@@ -1,24 +1,31 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <three-test />
+    <rotate-box />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { VRButton } from 'three/examples/jsm/webxr/VRButton.js';
+import RotateBox from "./components/RotateBox";
+import ThreeTest from "./components/ThreeTest";
 
 export default {
-  name: 'App',
+  name: "app",
   components: {
-    HelloWorld
+    RotateBox,
+    ThreeTest
+  },
+  mounted(){
+    document.body.appendChild( VRButton.createButton( this.renderer ) );
   }
-}
+};
+  
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
