@@ -6,6 +6,11 @@ import * as THREE from "three";
 export default {
   name: "RotateBox",
   props: {
+    texture: {
+      required: false,
+      type: String,
+      default: null
+    },
     speed: {
       required: false,
       type: Number,
@@ -21,14 +26,14 @@ export default {
     const scene = new THREE.Scene();
     const renderer = null;
     const camera = new THREE.PerspectiveCamera(75, 600 / 400, 0.1, 1000);
-    //const light = new THREE.DirectionalLight(0xffffff);
     const hemisphereLight = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     const pointLight = new THREE.PointLight(0xffffff, 1, 100);
     const pointLight2 = new THREE.PointLight(0x00ff00, 1, 100);
     const geometry = new THREE.BoxGeometry(1, 1, 1);
+    const textureLoader = new THREE.TextureLoader();
     const material = new THREE.MeshLambertMaterial( { color: this.colour } );
     const cube = new THREE.Mesh(geometry, material);
-    
+
     return { 
       scene, 
       renderer, 
@@ -38,7 +43,8 @@ export default {
       pointLight2, 
       geometry, 
       material, 
-      cube
+      cube,
+      textureLoader
     };
   },
   mounted() {
@@ -47,7 +53,6 @@ export default {
       antialias: true,
       canvas: $canvas
     });
-    
     this.pointLight.position.set(0, 0, 2);
     this.pointLight2.position.set(0, 0, 10);
     this.camera.position.set(0, 0, 2);
