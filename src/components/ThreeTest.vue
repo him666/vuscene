@@ -21,32 +21,31 @@ export default {
   },
   methods: {
     init () {
-      // set container
-      this.container = this.$refs.sceneContainer
       
+      this.container = this.$refs.sceneContainer;
 
-      // add camera
-      const fov = 60 // Field of view
-      const aspect = this.container.clientWidth / this.container.clientHeight
-      const near = 0.1 // the near clipping plane
-      const far = 30 // the far clipping plane
-      const camera = new THREE.PerspectiveCamera(fov, aspect, near, far)
-      camera.position.set(0, 5, 10)
-      this.camera = camera
+      const fov = 60; // Field of view
+      const aspect = this.container.clientWidth / this.container.clientHeight;
+      const near = 0.1; // the near clipping plane
+      const far = 30; // the far clipping plane
+      const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+      camera.position.set(0, 5, 10);
+      this.camera = camera;
 
-      // create scene
-      this.scene = new THREE.Scene()
-      this.scene.background = new THREE.Color('skyblue')
+      this.scene = new THREE.Scene();
+      this.scene.background = new THREE.Color('skyblue');
 
       // add lights
       const ambientLight = new THREE.HemisphereLight(
         0xffffff, // bright sky color
         0x222222, // dim ground color
         1 // intensity
-      )
-      const mainLight = new THREE.DirectionalLight(0xffffff, 4.0)
-      mainLight.position.set(10, 10, 10)
-      this.scene.add(ambientLight, mainLight)
+      );
+      const mainLight = new THREE.DirectionalLight(0xffffff, 4.0);
+      const pointLight = new THREE.PointLight(0xffffff, 1, 100);
+      const pointLight2 = new THREE.PointLight(0x00ff00, 1, 100);
+      mainLight.position.set(10, 10, 10);
+      this.scene.add(mainLight, ambientLight,pointLight, pointLight2);
 
       // add controls
       this.controls = new OrbitControls(this.camera, this.container)

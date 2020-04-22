@@ -11,7 +11,7 @@ export default {
       type: Number,
       default: 0.02
     },
-    color: {
+    colour: {
       required: false,
       type: Number,
       default: 0x00ff00
@@ -25,11 +25,10 @@ export default {
     const hemisphereLight = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     const pointLight = new THREE.PointLight(0xffffff, 1, 100);
     const pointLight2 = new THREE.PointLight(0x00ff00, 1, 100);
-    const spotLight = new THREE.SpotLight(0xffffff);
-    const spotLight2 = new THREE.SpotLight(0xffffff);
     const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshLambertMaterial( { color: this.color } );
+    const material = new THREE.MeshLambertMaterial( { color: this.colour } );
     const cube = new THREE.Mesh(geometry, material);
+    
     return { 
       scene, 
       renderer, 
@@ -37,8 +36,6 @@ export default {
       hemisphereLight, 
       pointLight, 
       pointLight2, 
-      spotLight, 
-      spotLight2, 
       geometry, 
       material, 
       cube
@@ -53,15 +50,11 @@ export default {
     
     this.pointLight.position.set(0, 0, 2);
     this.pointLight2.position.set(0, 0, 10);
-    this.spotLight.position.set(100, 1000, 100);
-    this.spotLight2.position.set(100, 1000, 100);
     this.camera.position.set(0, 0, 2);
     //this.light.position.set(0, 0, 10);
     this.scene.add(this.cube);
     //this.scene.add(this.light);
     this.scene.add(this.hemisphereLight);
-    this.scene.add(this.spotlight);
-    this.scene.add(this.spotlight2);
     this.scene.add(this.pointLight);
     this.scene.add(this.pointLight2);
 
@@ -72,8 +65,8 @@ export default {
       requestAnimationFrame(this.animate);
 
       this.cube.rotation.x += this.speed;
-      this.cube.rotation.y += this.speed;
-
+      this.cube.rotation.y += this.speed;      
+      this.cube.material.color.setHex(this.colour);
       this.renderer.render(this.scene, this.camera);
     }
   }
