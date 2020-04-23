@@ -11,7 +11,7 @@ https://vuescene.herokuapp.com
 For the Cube Model i tried to leverage the rendering process using  VUE.Js' lifecycle methods, trying to create everything the mount or data methods, passing all the important properties from the parent component to the child to keep behaviours easy to change. I also added some lights to give it a better look and according to requirements.
 Tried to change textures to the cube but couldnt load the texture fast enough to render it, loading the extra texture from the beggining could be a possible solution. I also added 2 buttons to add movement to the cube.
 
-For the GLTF Scene i couldnt really do this, due to lack of time, but i managed to load the GLTF model and added some lights to it, although they dont seem to render, also added some controls so that the GLTF model can be explored.
+For the GLTF Scene i couldnt really do this, due to lack of time, but i managed to load the GLTF model and added some lights to it, although they dont seem to render, also added some controls so that the GLTF model is explored.
 
 ## Piece of Code I am proud of.
 https://github.com/him666/LolFight/blob/master/app/controllers/guest_controller.rb
